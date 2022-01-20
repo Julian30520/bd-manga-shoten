@@ -24,8 +24,7 @@ DROP TABLE IF EXISTS `author`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `author` (
   `id_author` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +35,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Stacia','Andrassy'),(2,'Danya','Arnaudon'),(3,'Darcee','Mendonca'),(4,'Prudi','O\' Reagan'),(5,'Jackson','Mechi'),(6,'Eveline','Kibbe'),(7,'Jule','Cohn'),(8,'Kerstin','Stanman'),(9,'Malissa','Ayllett'),(10,'Son','Gilstin');
+INSERT INTO `author` VALUES (1,'Stacia'),(2,'Danya'),(3,'Darcee'),(4,'Prudi'),(5,'Jackson'),(6,'Eveline'),(7,'Jule'),(8,'Kerstin'),(9,'Malissa'),(10,'Son');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-18 16:24:20
+-- Dump completed on 2022-01-20 15:44:56
