@@ -127,14 +127,17 @@ DROP TABLE IF EXISTS `manga`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `manga` (
   `id_manga` int NOT NULL AUTO_INCREMENT,
+  `mangadex_id` varchar(255) DEFAULT NULL,
   `title_en` varchar(50) NOT NULL,
   `title_jp` varchar(50) NOT NULL,
+  `cover` varchar(255) DEFAULT NULL,
   `synopsis` varchar(255) DEFAULT NULL,
   `release_date` varchar(4) DEFAULT NULL,
   `id_author` int NOT NULL,
   PRIMARY KEY (`id_manga`),
   UNIQUE KEY `title_en` (`title_en`),
   UNIQUE KEY `title_jp` (`title_jp`),
+  UNIQUE KEY `mangadex_id_UNIQUE` (`mangadex_id`),
   KEY `manga_ibfk_1` (`id_author`),
   CONSTRAINT `manga_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `author` (`id_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -146,7 +149,7 @@ CREATE TABLE `manga` (
 
 LOCK TABLES `manga` WRITE;
 /*!40000 ALTER TABLE `manga` DISABLE KEYS */;
-INSERT INTO `manga` VALUES (31,'Elfenlied','寒','http://dummyimage.com/224x100.png/cc0000/ffffff','2020',1),(32,'3 Blind Mice','晧','http://dummyimage.com/201x100.png/5fa2dd/ffffff','2018',2),(33,'Deadly Tower, The','宸瑜','http://dummyimage.com/171x100.png/ff4444/ffffff','2013',3),(34,'Never Too Young to Die','浩成','http://dummyimage.com/117x100.png/ff4444/ffffff','2020',4),(35,'Dragon Age','泽瀚','http://dummyimage.com/157x100.png/5fa2dd/ffffff','2016',5),(36,'Matter of Dignity, A (To teleftaio psema)','韵','http://dummyimage.com/120x100.png/ff4444/ffffff','2017',6),(37,'House II: The Second Story','雅芙','http://dummyimage.com/107x100.png/dddddd/000000','2011',7),(38,'Great!','梓彤','http://dummyimage.com/185x100.png/5fa2dd/ffffff','2000',8),(39,'Joy Luck Club, The','佐仪','http://dummyimage.com/153x100.png/cc0000/ffffff','2013',9),(40,'Cavalcade','雅静','http://dummyimage.com/199x100.png/cc0000/ffffff','2019',10);
+INSERT INTO `manga` VALUES (31,NULL,'Elfenlied','寒',NULL,'http://dummyimage.com/224x100.png/cc0000/ffffff','2020',1),(32,NULL,'3 Blind Mice','晧',NULL,'http://dummyimage.com/201x100.png/5fa2dd/ffffff','2018',2),(33,NULL,'Deadly Tower, The','宸瑜',NULL,'http://dummyimage.com/171x100.png/ff4444/ffffff','2013',3),(34,NULL,'Never Too Young to Die','浩成',NULL,'http://dummyimage.com/117x100.png/ff4444/ffffff','2020',4),(35,NULL,'Dragon Age','泽瀚',NULL,'http://dummyimage.com/157x100.png/5fa2dd/ffffff','2016',5),(36,NULL,'Matter of Dignity, A (To teleftaio psema)','韵',NULL,'http://dummyimage.com/120x100.png/ff4444/ffffff','2017',6),(37,NULL,'House II: The Second Story','雅芙',NULL,'http://dummyimage.com/107x100.png/dddddd/000000','2011',7),(38,NULL,'Great!','梓彤',NULL,'http://dummyimage.com/185x100.png/5fa2dd/ffffff','2000',8),(39,NULL,'Joy Luck Club, The','佐仪',NULL,'http://dummyimage.com/153x100.png/cc0000/ffffff','2013',9),(40,NULL,'Cavalcade','雅静',NULL,'http://dummyimage.com/199x100.png/cc0000/ffffff','2019',10);
 /*!40000 ALTER TABLE `manga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-14 15:24:17
+-- Dump completed on 2022-01-18 16:24:20
