@@ -187,7 +187,7 @@ DROP TABLE IF EXISTS `tome`;
 CREATE TABLE `tome` (
   `id_tome` int NOT NULL AUTO_INCREMENT,
   `number` int NOT NULL,
-  `page_number` int DEFAULT NULL,
+  `chapter_number` int DEFAULT NULL,
   `cover` varchar(255) DEFAULT NULL,
   `id_editor` int NOT NULL,
   `id_manga` int NOT NULL,
@@ -280,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-20 15:44:56
+-- Dump completed on 2022-01-20 15:48:41
