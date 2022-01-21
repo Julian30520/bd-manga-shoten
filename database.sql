@@ -226,7 +226,7 @@ CREATE TABLE `user` (
   `avatar` varchar(255) DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   `id_role` int NOT NULL,
   PRIMARY KEY (`id_user`),
