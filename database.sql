@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `author` (
-  `id_author` int NOT NULL AUTO_INCREMENT,
+  `id_author` varchar(255) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -35,7 +35,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (1,'Stacia'),(2,'Danya'),(3,'Darcee'),(4,'Prudi'),(5,'Jackson'),(6,'Eveline'),(7,'Jule'),(8,'Kerstin'),(9,'Malissa'),(10,'Son');
+INSERT INTO `author` VALUES ('1','Stacia'),('2','Danya'),('3','Darcee'),('4','Prudi'),('5','Jackson'),('6','Eveline'),('7','Jule'),('8','Kerstin'),('9','Malissa'),('10','Son');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `editor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `editor` (
-  `id_editor` int NOT NULL AUTO_INCREMENT,
+  `id_editor` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `website` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_editor`),
@@ -61,7 +61,7 @@ CREATE TABLE `editor` (
 
 LOCK TABLES `editor` WRITE;
 /*!40000 ALTER TABLE `editor` DISABLE KEYS */;
-INSERT INTO `editor` VALUES (1,'DuBuque, Walsh and Kub','http://irs.gov'),(2,'Hauck, Lueilwitz and Larson','http://wikia.com'),(3,'Beahan-Daugherty','http://independent.co.uk'),(4,'Labadie Group','http://mayoclinic.com'),(5,'Hammes-Schumm','http://reddit.com'),(6,'Wilderman-Franecki','http://npr.org'),(7,'Mueller LLC','http://51.la'),(8,'Muller Group','http://wordpress.org'),(9,'O\'Keefe LLC','https://mapy.cz'),(10,'Osinski, Morissette and Schmeler','https://phoca.cz');
+INSERT INTO `editor` VALUES ('1','DuBuque, Walsh and Kub','http://irs.gov'),('2','Hauck, Lueilwitz and Larson','http://wikia.com'),('3','Beahan-Daugherty','http://independent.co.uk'),('4','Labadie Group','http://mayoclinic.com'),('5','Hammes-Schumm','http://reddit.com'),('6','Wilderman-Franecki','http://npr.org'),('7','Mueller LLC','http://51.la'),('8','Muller Group','http://wordpress.org'),('9','OKeefe LLC','https://mapy.cz'),('10','Osinski, Morissette and Schmeler','https://phoca.cz');
 /*!40000 ALTER TABLE `editor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `genre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genre` (
-  `id_type` int NOT NULL AUTO_INCREMENT,
+  `id_type` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id_type`),
   UNIQUE KEY `name` (`name`)
@@ -86,7 +86,7 @@ CREATE TABLE `genre` (
 
 LOCK TABLES `genre` WRITE;
 /*!40000 ALTER TABLE `genre` DISABLE KEYS */;
-INSERT INTO `genre` VALUES (4,'Children'),(3,'Comedy'),(2,'Crime'),(7,'Drama'),(6,'Fantasy'),(10,'Hentai'),(8,'Musical'),(5,'Romance'),(9,'Thriller'),(1,'Western');
+INSERT INTO `genre` VALUES ('4','Children'),('3','Comedy'),('2','Crime'),('7','Drama'),('6','Fantasy'),('10','Hentai'),('8','Musical'),('5','Romance'),('9','Thriller'),('1','Western');
 /*!40000 ALTER TABLE `genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,8 +98,8 @@ DROP TABLE IF EXISTS `genre_manga`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `genre_manga` (
-  `id_manga` int NOT NULL,
-  `id_type` int NOT NULL,
+  `id_manga` varchar(255) NOT NULL,
+  `id_type` varchar(255) NOT NULL,
   PRIMARY KEY (`id_manga`,`id_type`),
   KEY `id_type` (`id_type`),
   CONSTRAINT `genre_manga_ibfk_1` FOREIGN KEY (`id_manga`) REFERENCES `manga` (`id_manga`),
@@ -113,7 +113,7 @@ CREATE TABLE `genre_manga` (
 
 LOCK TABLES `genre_manga` WRITE;
 /*!40000 ALTER TABLE `genre_manga` DISABLE KEYS */;
-INSERT INTO `genre_manga` VALUES (31,1),(32,2),(33,3),(34,4),(35,5),(36,6),(37,7),(38,8),(39,9),(40,10);
+INSERT INTO `genre_manga` VALUES ('31','1'),('32','2'),('33','3'),('34','4'),('35','5'),('36','6'),('37','7'),('38','8'),('39','9'),('40','10');
 /*!40000 ALTER TABLE `genre_manga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,8 +125,7 @@ DROP TABLE IF EXISTS `manga`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `manga` (
-  `id_manga` int NOT NULL AUTO_INCREMENT,
-  `mangadex_id` varchar(255) DEFAULT NULL,
+  `id_manga` varchar(255) NOT NULL,
   `title_en` varchar(50) NOT NULL,
   `title_jp` varchar(50) NOT NULL,
   `status` varchar(45) DEFAULT NULL,
@@ -136,11 +135,10 @@ CREATE TABLE `manga` (
   `cover` varchar(255) DEFAULT NULL,
   `synopsis` varchar(255) DEFAULT NULL,
   `release_date` varchar(4) DEFAULT NULL,
-  `id_author` int NOT NULL,
+  `id_author` varchar(255) NOT NULL,
   PRIMARY KEY (`id_manga`),
   UNIQUE KEY `title_en` (`title_en`),
   UNIQUE KEY `title_jp` (`title_jp`),
-  UNIQUE KEY `mangadex_id_UNIQUE` (`mangadex_id`),
   KEY `manga_ibfk_1` (`id_author`),
   CONSTRAINT `manga_ibfk_1` FOREIGN KEY (`id_author`) REFERENCES `author` (`id_author`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -152,7 +150,7 @@ CREATE TABLE `manga` (
 
 LOCK TABLES `manga` WRITE;
 /*!40000 ALTER TABLE `manga` DISABLE KEYS */;
-INSERT INTO `manga` VALUES (31,NULL,'Elfenlied','寒',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/224x100.png/cc0000/ffffff','2020',1),(32,NULL,'3 Blind Mice','晧',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/201x100.png/5fa2dd/ffffff','2018',2),(33,NULL,'Deadly Tower, The','宸瑜',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/171x100.png/ff4444/ffffff','2013',3),(34,NULL,'Never Too Young to Die','浩成',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/117x100.png/ff4444/ffffff','2020',4),(35,NULL,'Dragon Age','泽瀚',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/157x100.png/5fa2dd/ffffff','2016',5),(36,NULL,'Matter of Dignity, A (To teleftaio psema)','韵',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/120x100.png/ff4444/ffffff','2017',6),(37,NULL,'House II: The Second Story','雅芙',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/107x100.png/dddddd/000000','2011',7),(38,NULL,'Great!','梓彤',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/185x100.png/5fa2dd/ffffff','2000',8),(39,NULL,'Joy Luck Club, The','佐仪',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/153x100.png/cc0000/ffffff','2013',9),(40,NULL,'Cavalcade','雅静',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/199x100.png/cc0000/ffffff','2019',10);
+INSERT INTO `manga` VALUES ('31','Elfenlied','寒',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/224x100.png/cc0000/ffffff','2020','1'),('32','3 Blind Mice','晧',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/201x100.png/5fa2dd/ffffff','2018','2'),('33','Deadly Tower, The','宸瑜',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/171x100.png/ff4444/ffffff','2013','3'),('34','Never Too Young to Die','浩成',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/117x100.png/ff4444/ffffff','2020','4'),('35','Dragon Age','泽瀚',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/157x100.png/5fa2dd/ffffff','2016','5'),('36','Matter of Dignity, A (To teleftaio psema)','韵',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/120x100.png/ff4444/ffffff','2017','6'),('37','House II: The Second Story','雅芙',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/107x100.png/dddddd/000000','2011','7'),('38','Great!','梓彤',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/185x100.png/5fa2dd/ffffff','2000','8'),('39','Joy Luck Club, The','佐仪',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/153x100.png/cc0000/ffffff','2013','9'),('40','Cavalcade','雅静',NULL,NULL,NULL,NULL,NULL,'http://dummyimage.com/199x100.png/cc0000/ffffff','2019','10');
 /*!40000 ALTER TABLE `manga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,12 +187,12 @@ DROP TABLE IF EXISTS `tome`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tome` (
-  `id_tome` int NOT NULL AUTO_INCREMENT,
+  `id_tome` varchar(255) NOT NULL,
   `number` int NOT NULL,
   `chapter_number` int DEFAULT NULL,
   `cover` varchar(255) DEFAULT NULL,
-  `id_editor` int NOT NULL,
-  `id_manga` int NOT NULL,
+  `id_editor` varchar(255) NOT NULL,
+  `id_manga` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tome`),
   KEY `tome_ibfk_1` (`id_editor`),
   KEY `tome_ibfk_2` (`id_manga`),
@@ -209,7 +207,7 @@ CREATE TABLE `tome` (
 
 LOCK TABLES `tome` WRITE;
 /*!40000 ALTER TABLE `tome` DISABLE KEYS */;
-INSERT INTO `tome` VALUES (3,11,150,'http://dummyimage.com/154x100.png/5fa2dd/ffffff',1,31),(4,18,96,'http://dummyimage.com/152x100.png/5fa2dd/ffffff',2,32),(5,17,98,'http://dummyimage.com/139x100.png/5fa2dd/ffffff',3,33),(6,30,61,'http://dummyimage.com/110x100.png/dddddd/000000',4,34),(7,22,58,'http://dummyimage.com/145x100.png/ff4444/ffffff',5,35),(8,12,78,'http://dummyimage.com/201x100.png/ff4444/ffffff',6,36),(9,17,112,'http://dummyimage.com/186x100.png/5fa2dd/ffffff',7,37),(10,14,192,'http://dummyimage.com/135x100.png/5fa2dd/ffffff',8,38),(11,19,130,'http://dummyimage.com/166x100.png/5fa2dd/ffffff',9,39),(12,3,26,'http://dummyimage.com/117x100.png/dddddd/000000',10,40);
+INSERT INTO `tome` VALUES ('3',11,150,'http://dummyimage.com/154x100.png/5fa2dd/ffffff','1','31'),('4',18,96,'http://dummyimage.com/152x100.png/5fa2dd/ffffff','2','32'),('5',17,98,'http://dummyimage.com/139x100.png/5fa2dd/ffffff','3','33'),('6',30,61,'http://dummyimage.com/110x100.png/dddddd/000000','4','34'),('7',22,58,'http://dummyimage.com/145x100.png/ff4444/ffffff','5','35'),('8',12,78,'http://dummyimage.com/201x100.png/ff4444/ffffff','6','36'),('9',17,112,'http://dummyimage.com/186x100.png/5fa2dd/ffffff','7','37'),('10',14,192,'http://dummyimage.com/135x100.png/5fa2dd/ffffff','8','38'),('11',19,130,'http://dummyimage.com/166x100.png/5fa2dd/ffffff','9','39'),('12',3,26,'http://dummyimage.com/117x100.png/dddddd/000000','10','40');
 /*!40000 ALTER TABLE `tome` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +255,7 @@ DROP TABLE IF EXISTS `user_tome`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_tome` (
   `id_user` int NOT NULL,
-  `id_tome` int NOT NULL,
+  `id_tome` varchar(255) NOT NULL,
   PRIMARY KEY (`id_user`,`id_tome`),
   KEY `id_tome` (`id_tome`),
   CONSTRAINT `user_tome_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
@@ -271,7 +269,7 @@ CREATE TABLE `user_tome` (
 
 LOCK TABLES `user_tome` WRITE;
 /*!40000 ALTER TABLE `user_tome` DISABLE KEYS */;
-INSERT INTO `user_tome` VALUES (1,3),(2,4),(3,5),(4,6),(5,7),(6,8),(7,9),(8,10),(9,11),(10,12);
+INSERT INTO `user_tome` VALUES (1,'3'),(2,'4'),(3,'5'),(4,'6'),(5,'7'),(6,'8'),(7,'9'),(8,'10'),(9,'11'),(10,'12');
 /*!40000 ALTER TABLE `user_tome` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
