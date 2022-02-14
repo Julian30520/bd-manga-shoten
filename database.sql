@@ -1,5 +1,28 @@
 
 
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema bd-manga-shoten
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema bd-manga-shoten
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `bd-manga-shoten` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+
+USE `bd-manga-shoten` ;
+
+CREATE USER IF NOT EXISTS mangareader IDENTIFIED BY 'readerpass';
+GRANT ALL ON `bd-manga-shoten`.* TO mangareader;
+
+
 DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -98,7 +121,6 @@ INSERT INTO `genre_manga` VALUES ('31','1'),('32','2'),('33','3'),('34','4'),('3
 /*!40000 ALTER TABLE `genre_manga` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
 -- Table structure for table `manga`
 --
 
@@ -253,3 +275,4 @@ LOCK TABLES `user_tome` WRITE;
 INSERT INTO `user_tome` VALUES (1,'3'),(2,'4'),(3,'5'),(4,'6'),(5,'7'),(6,'8'),(7,'9'),(8,'10'),(9,'11'),(10,'12');
 /*!40000 ALTER TABLE `user_tome` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!40101 SET character_set_client = @saved_cs_client */;
