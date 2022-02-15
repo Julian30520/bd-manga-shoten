@@ -43,31 +43,6 @@ INSERT INTO `author` VALUES ('1','Stacia'),('2','Danya'),('3','Darcee'),('4','Pr
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `editor`
---
-
-DROP TABLE IF EXISTS `editor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `editor` (
-  `id_editor` varchar(255) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_editor`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `editor`
---
-
-LOCK TABLES `editor` WRITE;
-/*!40000 ALTER TABLE `editor` DISABLE KEYS */;
-INSERT INTO `editor` VALUES ('1','DuBuque, Walsh and Kub','http://irs.gov'),('2','Hauck, Lueilwitz and Larson','http://wikia.com'),('3','Beahan-Daugherty','http://independent.co.uk'),('4','Labadie Group','http://mayoclinic.com'),('5','Hammes-Schumm','http://reddit.com'),('6','Wilderman-Franecki','http://npr.org'),('7','Mueller LLC','http://51.la'),('8','Muller Group','http://wordpress.org'),('9','OKeefe LLC','https://mapy.cz'),('10','Osinski, Morissette and Schmeler','https://phoca.cz');
-/*!40000 ALTER TABLE `editor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `genre`
@@ -194,13 +169,10 @@ CREATE TABLE `tome` (
   `number` int NOT NULL,
   `chapter_number` int DEFAULT NULL,
   `cover` varchar(255) DEFAULT NULL,
-  `id_editor` varchar(255) NOT NULL,
   `id_manga` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tome`),
-  KEY `tome_ibfk_1` (`id_editor`),
-  KEY `tome_ibfk_2` (`id_manga`),
-  CONSTRAINT `tome_ibfk_1` FOREIGN KEY (`id_editor`) REFERENCES `editor` (`id_editor`),
-  CONSTRAINT `tome_ibfk_2` FOREIGN KEY (`id_manga`) REFERENCES `manga` (`id_manga`)
+  KEY `tome_ibfk_1` (`id_manga`),
+  CONSTRAINT `tome_ibfk_1` FOREIGN KEY (`id_manga`) REFERENCES `manga` (`id_manga`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
