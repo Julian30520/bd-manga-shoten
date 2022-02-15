@@ -136,7 +136,7 @@ CREATE TABLE `manga` (
   `last_volume` varchar(4) DEFAULT NULL,
   `last_chapter` varchar(4) DEFAULT NULL,
   `cover` varchar(255) DEFAULT NULL,
-  `synopsis` varchar(255) DEFAULT NULL,
+  `synopsis` TEXT DEFAULT NULL,
   `release_date` varchar(4) DEFAULT NULL,
   `id_author` varchar(255) NOT NULL,
   PRIMARY KEY (`id_manga`),
