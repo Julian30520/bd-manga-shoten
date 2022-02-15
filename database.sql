@@ -190,7 +190,7 @@ DROP TABLE IF EXISTS `tome`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tome` (
-  `id_tome` varchar(255) NOT NULL,
+  `id_tome` INT NOT NULL AUTO_INCREMENT,
   `number` int NOT NULL,
   `chapter_number` int DEFAULT NULL,
   `cover` varchar(255) DEFAULT NULL,
@@ -204,15 +204,7 @@ CREATE TABLE `tome` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tome`
---
 
-LOCK TABLES `tome` WRITE;
-/*!40000 ALTER TABLE `tome` DISABLE KEYS */;
-INSERT INTO `tome` VALUES ('3',11,150,'http://dummyimage.com/154x100.png/5fa2dd/ffffff','1','31'),('4',18,96,'http://dummyimage.com/152x100.png/5fa2dd/ffffff','2','32'),('5',17,98,'http://dummyimage.com/139x100.png/5fa2dd/ffffff','3','33'),('6',30,61,'http://dummyimage.com/110x100.png/dddddd/000000','4','34'),('7',22,58,'http://dummyimage.com/145x100.png/ff4444/ffffff','5','35'),('8',12,78,'http://dummyimage.com/201x100.png/ff4444/ffffff','6','36'),('9',17,112,'http://dummyimage.com/186x100.png/5fa2dd/ffffff','7','37'),('10',14,192,'http://dummyimage.com/135x100.png/5fa2dd/ffffff','8','38'),('11',19,130,'http://dummyimage.com/166x100.png/5fa2dd/ffffff','9','39'),('12',3,26,'http://dummyimage.com/117x100.png/dddddd/000000','10','40');
-/*!40000 ALTER TABLE `tome` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -258,7 +250,7 @@ DROP TABLE IF EXISTS `user_tome`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_tome` (
   `id_user` int NOT NULL,
-  `id_tome` varchar(255) NOT NULL,
+  `id_tome` INT NOT NULL,
   PRIMARY KEY (`id_user`,`id_tome`),
   KEY `id_tome` (`id_tome`),
   CONSTRAINT `user_tome_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
