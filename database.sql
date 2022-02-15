@@ -105,7 +105,7 @@ DROP TABLE IF EXISTS `manga`;
 CREATE TABLE `manga` (
   `id_manga` varchar(255) NOT NULL,
   `title_en` varchar(50) NOT NULL,
-  `title_jp` varchar(50) NOT NULL,
+  `title_jp` varchar(50) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   `publication_demographic` varchar(20) DEFAULT NULL,
   `last_volume` varchar(4) DEFAULT NULL,
